@@ -25,7 +25,7 @@ setInterval(function() {
                 return;
             }
 
-            if (timeLeft.startsWith("03:52")) {
+            if (timeLeft.startsWith("00:05")) {
                 showNotification(
                     name,
                     row.children[3].getElementsByTagName("img")[0].attributes["src"].value
