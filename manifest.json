@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "SINoAlice Notifier",
+  "version": "1.0",
+
+  "description": "Adds push notifications for game-db.tw",
+
+  "icons": {
+    "48": "icon-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://sinoalice.game-db.tw/timer"],
+      "js": ["notifier.js"]
+    }
+  ]
+
+}
