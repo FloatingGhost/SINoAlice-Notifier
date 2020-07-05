@@ -8,7 +8,8 @@ function showNotification(name, imageUrl) {
   );
 };
 
-console.log("startup");
+let ignore = [];
+
 setInterval(function() {
     const rows = Array.from(
             document
@@ -19,11 +20,21 @@ setInterval(function() {
         .forEach(function(row) {
             const timeLeft = row.children[0].textContent.split(" ")[2];
             const name = row.children[3].textContent;
-            if (timeLeft.startsWith("00:05:00")) {
+            const id = row.children[1].textContent + name;
+            if (ignore.includes(id)) {
+                return;
+            }
+
+            if (timeLeft.startsWith("03:52")) {
                 showNotification(
                     name,
                     row.children[3].getElementsByTagName("img")[0].attributes["src"].value
                 );
+                ignore.push(id);
             }
         });
-}, 1000);
+}, 5000);
+
+setInterval(function() {
+  ignore = [];
+}, 30 * 60 * 1000);
